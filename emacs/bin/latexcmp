@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+# This program allows us to compare two versions of latex, disabling red code and putting in blue the
+# added and/or modified part.
+if [ $1 ]; then
+    src=$1;
+fi
+if [ $2 ]; then
+    dst=$2;
+fi
+
+if [ $3 ]; then
+    output=$3;
+else
+    output="diff";
+fi
+
+if [ $dst ]; then
+    latexdiff -t CTRADITIONAL $src $dst 2>/dev/null | perl -pe 'if (/DIFdel\}/) {$_ =~ s/1\]{.*}/1\]{}/}; $_ =~ s#\\protect\s*(.*)\s+\\sf#\1#' 
+fi

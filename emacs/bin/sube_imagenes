@@ -1,0 +1,19 @@
+#!/bin/bash
+prog=""
+if [ -d .hg ] || [ -d ../.hg ]; then
+    prog="hg"
+elif [ -d .git ] || [ -d ../.git ]; then
+    prog="git"
+else
+    echo "No mercurial or git directory find"
+    exit
+fi
+
+if [ -z $1 ]; then
+    input="*.bea"
+else
+    input=$1
+fi
+
+imgs=$(grep "file:" $input | cut -d: -f2 | cut -d\] -f1)
+for x in $imgs; do $prog add $x; done
