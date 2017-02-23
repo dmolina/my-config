@@ -1,0 +1,128 @@
+IMAPAccount gmail
+# Address to connect to
+Host imap.gmail.com
+User danimolina@gmail.com
+PassCmd "imap-pass -g danimolina@gmail.com"
+UseIMAPS         yes
+CertificateFile  ~/Mail/gmail.crt
+CertificateFile  ~/Mail/google.crt
+CertificateFile  /usr/share/ca-certificates/mozilla/Equifax_Secure_CA.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/Mail/gmail/
+Inbox ~/Mail/gmail/Inbox
+
+Channel gmail-inbox
+Master :gmail-remote:
+Slave :gmail-local:
+Create Slave
+Expunge Slave
+SyncState *
+Patterns "INBOX" "[Gmail]/Borradores" ![Gmail]*
+# Exclude everything under the internal [Gmail] , except archived mails
+#Patterns  * ![Gmail]* "[Gmail]/All Mail"
+
+Channel gmail-sent
+# we need the double quotes
+Master ":gmail-remote:[Gmail]/Enviados"
+Slave :gmail-local:sent-mail
+Create Slave
+Expunge Slave
+Sync Pull
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-sent
+
+Group all
+Channel gmail-inbox
+Channel gmail-sent
+Channel uca
+Channel decsai
+
+# UCA
+IMAPAccount uca
+Host imap.uca.es
+User damoca
+PassCmd "imap-pass -g daniel.molina@uca.es"
+UseIMAPS          yes
+
+IMAPStore uca-remote
+Account uca
+
+MaildirStore uca-local
+Path ~/Mail/uca/
+Inbox ~/Mail/uca/Inbox
+
+Channel uca
+Master :uca-remote:
+Slave :uca-local:
+Create Slave
+Expunge Slave
+SyncState *
+#Patterns "INBOX" "[Gmail]/Enviados" "[Gmail]/Borradores" "[Gmail]/Starred"
+# Exclude everything under the internal [Gmail] folder, except archived mails
+#Patterns  * ![Gmail]* "[Gmail]/All Mail"
+#Patterns !"INBOX/Curso*" !"INBOX/Spam"
+#Patterns "INBOX" #"INBOX/Sent" "INBOX/Trash"
+
+# UCA
+IMAPAccount uca
+Host imap.uca.es
+User damoca
+PassCmd "imap-pass -g daniel.molina@uca.es"
+UseIMAPS          yes
+
+IMAPStore uca-remote
+Account uca
+
+MaildirStore uca-local
+Path ~/Mail/uca/
+Inbox ~/Mail/uca/Inbox
+
+Channel uca
+Master :uca-remote:
+Slave :uca-local:
+Create Slave
+Expunge Slave
+SyncState *
+#Patterns "INBOX" "[Gmail]/Enviados" "[Gmail]/Borradores" "[Gmail]/Starred"
+# Exclude everything under the internal [Gmail] folder, except archived mails
+#Patterns  * ![Gmail]* "[Gmail]/All Mail"
+#Patterns !"INBOX/Curso*" !"INBOX/Spam"
+#Patterns "INBOX" #"INBOX/Sent" "INBOX/Trash"
+
+Group all
+Channel gmail-inbox
+Channel gmail-sent
+Channel uca
+Channel decsai
+
+# Decsai
+IMAPAccount decsai
+Host decsai.ugr.es
+User dmolina
+PassCmd "imap-pass -g dmolina@decsai.ugr.es"
+UseIMAPS          yes
+
+IMAPStore decsai-remote
+Account decsai
+
+MaildirStore decsai-local
+Path ~/Mail/decsai/
+Inbox ~/Mail/decsai/Inbox
+
+Channel decsai
+Master :decsai-remote:
+Slave :decsai-local:
+Create Slave
+Expunge Slave
+SyncState *
+#Patterns "INBOX" "[Gmail]/Enviados" "[Gmail]/Borradores" "[Gmail]/Starred"
+# Exclude everything under the internal [Gmail] folder, except archived mails
+#Patterns  * ![Gmail]* "[Gmail]/All Mail"
+#Patterns !"INBOX/Curso*" !"INBOX/Spam"
+#Patterns "INBOX" #"INBOX/Sent" "INBOX/Trash"
