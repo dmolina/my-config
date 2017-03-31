@@ -53,7 +53,7 @@ ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git-extras vagrant z ag z)
+plugins=(git-extras vagrant z ag debian)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,3 +100,10 @@ alias cp='cp -i'
 alias please='sudo $(history -p \!\!)'
 alias fuck='$(thefuck $(fc -ln -1))'
 alias mp='ncmpcpp'
+
+# From http://grml.org/zsh/zsh-lovers.html
+# Activate cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+# Ignore completion functions for commands you don’t have:
+zstyle ':completion:*:functions' ignored-patterns '_*'
