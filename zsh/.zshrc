@@ -85,3 +85,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Alias for files
+alias -s tex=em
+alias -s tpl=em
+alias -s bea=em
+alias -s org=em
