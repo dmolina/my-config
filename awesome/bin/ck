@@ -1,0 +1,2 @@
+#!/bin/bash
+/opt/conkeror/xulrunner/xulrunner /opt/conkeror/application.ini "$*" 2>/dev/null&
