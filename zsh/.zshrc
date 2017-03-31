@@ -91,3 +91,12 @@ alias -s tex=em
 alias -s tpl=em
 alias -s bea=em
 alias -s org=em
+
+# Add Path
+export PATH=~/Trabajo/bin/:/opt/calibre:$PATH:~/.local/bin # For python commands
+alias ra='ranger'
+alias rm='trash-put'
+alias cp='cp -i'
+alias please='sudo $(history -p \!\!)'
+alias fuck='$(thefuck $(fc -ln -1))'
+alias mp='ncmpcpp'
