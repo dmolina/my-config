@@ -339,6 +339,8 @@ you should place your code here."
                                         ; It select shift, problem with org-mode
   (setq avy-timeout-seconds 1)
   (windmove-default-keybindings)
+   (load-file "~/.emacs.d/private/recentf-ext.el"); Add dired in recentf
+
   (setq tramp-default-method "ssh")
   (load-file "~/.emacs.d/private/mail.el")
   (global-set-key (kbd "C-Q") 'kill-this-buffer)
