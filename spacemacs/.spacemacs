@@ -334,6 +334,7 @@ you should place your code here."
     )
   (global-set-key [f3] 'ace-window)
   (global-set-key [f2] 'avy-goto-char-timer)
+  (global-set-key [f4] 'spacemacs/jump-to-last-layout)
   (global-set-key [f7] 'org-beamer-export-to-latex)
                                         ; It select shift, problem with org-mode
   (setq avy-timeout-seconds 1)
