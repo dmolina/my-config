@@ -52,6 +52,7 @@ run_once("kupfer")
 run_once("unclutter -idle 1 -root")
 run_once("nm-applet")
 run_once("udiskie --tray")
+run_once("tmux")
 --run_once("ck")
 --run_once("firefox")
 --run_once("thunderbird")
@@ -693,6 +694,9 @@ awful.rules.rules = {
 
     { rule = { class = "Emacs" },
 	  properties = { tag = tags[mouse.screen][3] } },
+
+    { rule = { class = "Tmux" },
+	  properties = { tag = tags[mouse.screen][2] } },
 
     { rule = { class = "Thunderbird" },
           properties = { tag = tags[mouse.screen][2] } },
