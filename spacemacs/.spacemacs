@@ -55,13 +55,7 @@ values."
       pdf-tools
       octave
       latex
-      (mu4e :variables
-            mu4e-account-alist t
-            mu4e-enable-notifications t
-            mu4e-enable-mode-line t 
-            mu4e-spacemacs-layout-name "@Mu4e"
-            mu4e-spacemacs-layout-binding "m")
-      
+      (mu4e :variables mu4e-account-alist t mu4e-enable-notifications t mu4e-enable-mode-line t)
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
