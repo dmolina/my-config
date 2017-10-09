@@ -62,7 +62,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(runner interleave)
+   dotspacemacs-additional-packages '(runner interleave ox-hugo)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -338,7 +338,11 @@ you should place your code here."
   (setq tramp-default-method "ssh")
   (load-file "~/.emacs.d/private/mail.el")
   (global-set-key (kbd "C-Q") 'kill-this-buffer)
-  )
+  (use-package ox-hugo
+    :ensure t
+    :after ox)
+)
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
