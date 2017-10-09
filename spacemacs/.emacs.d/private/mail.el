@@ -29,8 +29,15 @@
            (mu4e-drafts-folder "/uca/Drafts")
            (mu4e-trash-folder "/uca/Trash")
            (user-mail-address "daniel.molina@uca.es")
+           (user-full-name "Daniel Molina Cabrera"))
+          ("decsai"
+           (mu4e-sent-messages-behavior sent)
+           (mu4e-sent-folder "/decsai/Sent")
+           (mu4e-drafts-folder "/decsai/Drafts")
+           (mu4e-trash-folder "/decsai/Trash")
+           (user-mail-address "dmolina@decsai.ugr.es")
            (user-full-name "Daniel Molina Cabrera"))))
-  (mu4e/mail-account-reset)
+  ; (mu4e/mail-account-reset)
   ;; show images
   (setq mu4e-show-images t)
 
@@ -63,5 +70,24 @@
               (local-set-key (kbd "<backtab>") 'shr-previous-link)))
   (setq shr-color-visible-luminance-min 80)
   (setq mu4e-headers-sort-direction 'ascending)
+                                        ; Access to marked files in dired mode to attach
+  (require 'gnus-dired)
+  ;; make the `gnus-dired-mail-buffers' function also work on
+  ;; message-mode derived modes, such as mu4e-compose-mode
+  (defun gnus-dired-mail-buffers ()
+    "Return a list of active message buffers."
+    (let (buffers)
+      (save-current-buffer
+        (dolist (buffer (buffer-list t))
+          (set-buffer buffer)
+          (when (and (derived-mode-p 'message-mode)
+                     (null message-sent-message-via))
+            (push (buffer-name buffer) buffers))))
+      (nreverse buffers)))
 
+  (setq gnus-dired-mail-mode 'mu4e-user-agent)
+  (add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+
+  (setq message-sendmail-envelope-from 'header)
+  (add-hook 'message-send-mail-hook 'choose-msmtp-account)
 )
