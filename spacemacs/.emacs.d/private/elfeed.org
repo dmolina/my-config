@@ -7,3 +7,5 @@
 ** https://www.reddit.com/r/programming/.rss                    :programming:
 ** https://www.reddit.com/r/emacs/.rss                                :emacs:
 ** https://www.reddit.com/r/spaceemacs/.rss                           :emacs:
+** https://www.reddit.com/r/python/.rss                              :python:
+** http://planetpython.org/rss20.xml                                 :python:
