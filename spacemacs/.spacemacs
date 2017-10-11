@@ -52,6 +52,7 @@ values."
       syntax-checking
       pandoc
       (python :variables python-test-runner 'pytest)
+      (elfeed :variables rmh-elfeed-org-files (list "~/.emacs.d/private/elfeed.org"))
       pdf-tools
       octave
       latex
